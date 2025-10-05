@@ -1,0 +1,174 @@
+[
+    {
+        "id": "a8067c37c8f07c10",
+        "type": "tab",
+        "label": "Device Bayu",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "rgb-colorpicker",
+        "type": "ui_colour_picker",
+        "z": "a8067c37c8f07c10",
+        "name": "RGB Color",
+        "label": "Pick Color",
+        "group": "732f35dbcaf0dce4",
+        "format": "hex",
+        "outformat": "string",
+        "showSwatch": true,
+        "showPicker": true,
+        "showValue": true,
+        "showHue": false,
+        "showAlpha": false,
+        "showLightness": true,
+        "square": "false",
+        "width": "",
+        "height": "",
+        "passthru": true,
+        "topic": "",
+        "topicType": "str",
+        "className": "",
+        "x": 270,
+        "y": 180,
+        "wires": [
+            [
+                "mqtt-rgb-cmd"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt-rgb-cmd",
+        "type": "mqtt out",
+        "z": "a8067c37c8f07c10",
+        "name": "RGB Command",
+        "topic": "perintah/rgb",
+        "qos": "1",
+        "retain": "false",
+        "broker": "38f9e6b2f1f8e0c1",
+        "x": 510,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "led-onoff",
+        "type": "ui_button",
+        "z": "a8067c37c8f07c10",
+        "name": "LED Switch",
+        "group": "732f35dbcaf0dce4",
+        "order": 2,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "LED {{msg.payload}}",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "ON",
+        "payloadType": "str",
+        "topic": "perintah/led",
+        "topicType": "str",
+        "x": 260,
+        "y": 240,
+        "wires": [
+            [
+                "mqtt-led-cmd"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt-led-cmd",
+        "type": "mqtt out",
+        "z": "a8067c37c8f07c10",
+        "name": "LED Command",
+        "topic": "perintah/led",
+        "qos": "1",
+        "retain": "false",
+        "broker": "38f9e6b2f1f8e0c1",
+        "x": 510,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "rgb-status-in",
+        "type": "mqtt in",
+        "z": "a8067c37c8f07c10",
+        "name": "RGB Status",
+        "topic": "status/rgb",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "38f9e6b2f1f8e0c1",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 260,
+        "y": 300,
+        "wires": [
+            [
+                "rgb-status-txt"
+            ]
+        ]
+    },
+    {
+        "id": "rgb-status-txt",
+        "type": "ui_text",
+        "z": "a8067c37c8f07c10",
+        "group": "732f35dbcaf0dce4",
+        "order": 3,
+        "width": 6,
+        "height": 1,
+        "name": "RGB Value",
+        "label": "RGB Value",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": "",
+        "color": "#000000",
+        "x": 510,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "38f9e6b2f1f8e0c1",
+        "type": "mqtt-broker",
+        "name": "Shiftr.io",
+        "broker": "node-red-mqtt.cloud.shiftr.io",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "baedfd4828b1894b",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-dashboard": "3.6.6"
+        }
+    }
+]

@@ -1,0 +1,261 @@
+[
+    {
+        "id": "d27fb9b35f79d659",
+        "type": "tab",
+        "label": "Device Servo",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "ad05f65667c63b80",
+        "type": "mqtt in",
+        "z": "d27fb9b35f79d659",
+        "name": "Servo Status",
+        "topic": "status/servo",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "mqtt-shiftr",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 160,
+        "y": 60,
+        "wires": [
+            [
+                "09d348dc5c932ec6",
+                "6a4d5814f28ae5c9",
+                "e506d5884bdc1d84"
+            ]
+        ]
+    },
+    {
+        "id": "09d348dc5c932ec6",
+        "type": "ui_gauge",
+        "z": "d27fb9b35f79d659",
+        "name": "Servo Gauge",
+        "group": "servo-group",
+        "order": 1,
+        "width": 6,
+        "height": 4,
+        "gtype": "gage",
+        "title": "Sudut Servo",
+        "label": "°",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "180",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "x": 410,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "6a4d5814f28ae5c9",
+        "type": "ui_text",
+        "z": "d27fb9b35f79d659",
+        "group": "servo-group",
+        "order": 2,
+        "width": 6,
+        "height": 1,
+        "name": "Servo Angle Text",
+        "label": "Posisi Servo",
+        "format": "{{msg.payload}} °",
+        "layout": "row-spread",
+        "x": 430,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "e506d5884bdc1d84",
+        "type": "ui_chart",
+        "z": "d27fb9b35f79d659",
+        "name": "Servo History",
+        "group": "servo-group",
+        "order": 3,
+        "width": 12,
+        "height": 4,
+        "label": "Log Posisi Servo",
+        "chartType": "line",
+        "xformat": "HH:mm:ss",
+        "ymin": "0",
+        "ymax": "180",
+        "removeOlder": "1",
+        "removeOlderUnit": "3600",
+        "colors": [
+            "#1f77b4"
+        ],
+        "outputs": 1,
+        "x": 420,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a6f41d0c3814c475",
+        "type": "ui_slider",
+        "z": "d27fb9b35f79d659",
+        "name": "Servo Slider",
+        "label": "Atur Servo",
+        "group": "servo-group",
+        "order": 4,
+        "width": 12,
+        "height": 2,
+        "topic": "perintah/servo",
+        "min": 0,
+        "max": 180,
+        "step": 1,
+        "x": 350,
+        "y": 200,
+        "wires": [
+            [
+                "ec642f1e34149d8e"
+            ]
+        ]
+    },
+    {
+        "id": "ec642f1e34149d8e",
+        "type": "mqtt out",
+        "z": "d27fb9b35f79d659",
+        "name": "Send Servo Command",
+        "topic": "perintah/servo",
+        "qos": "1",
+        "retain": "",
+        "broker": "mqtt-shiftr",
+        "x": 600,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "307486922ce822f6",
+        "type": "mqtt in",
+        "z": "d27fb9b35f79d659",
+        "name": "Heartbeat Servo",
+        "topic": "status/heartbeat_a",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "mqtt-shiftr",
+        "inputs": 0,
+        "x": 160,
+        "y": 260,
+        "wires": [
+            [
+                "571b4d47734f920c"
+            ]
+        ]
+    },
+    {
+        "id": "571b4d47734f920c",
+        "type": "ui_text",
+        "z": "d27fb9b35f79d659",
+        "group": "servo-group",
+        "order": 5,
+        "width": 12,
+        "height": 1,
+        "name": "Heartbeat Text",
+        "label": "Heartbeat",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 440,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "975b0ed2782d51d8",
+        "type": "mqtt in",
+        "z": "d27fb9b35f79d659",
+        "name": "Online/Offline",
+        "topic": "status/device_a",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "mqtt-shiftr",
+        "inputs": 0,
+        "x": 170,
+        "y": 320,
+        "wires": [
+            [
+                "fbcb5375a68c6f5d"
+            ]
+        ]
+    },
+    {
+        "id": "fbcb5375a68c6f5d",
+        "type": "ui_led",
+        "z": "d27fb9b35f79d659",
+        "order": 6,
+        "group": "servo-group",
+        "width": 4,
+        "height": 1,
+        "label": "ESP Servo Status",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "OFFLINE",
+                "valueType": "str"
+            },
+            {
+                "color": "#008000",
+                "value": "ONLINE",
+                "valueType": "str"
+            }
+        ],
+        "shape": "circle",
+        "showGlow": true,
+        "x": 420,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "mqtt-shiftr",
+        "type": "mqtt-broker",
+        "name": "Shiftr.io",
+        "broker": "nodered-mes.cloud.shiftr.io",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 15,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "servo-group",
+        "type": "ui_group",
+        "name": "Monitoring Servo",
+        "tab": "servo-tab",
+        "order": 1,
+        "width": "12"
+    },
+    {
+        "id": "servo-tab",
+        "type": "ui_tab",
+        "name": "Device Servo",
+        "icon": "dashboard"
+    },
+    {
+        "id": "e7060dea782d709e",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-dashboard": "3.6.6",
+            "node-red-contrib-ui-led": "0.4.11"
+        }
+    }
+]
