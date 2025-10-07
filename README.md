@@ -84,9 +84,7 @@ All communication runs **in real-time** via **MQTT and Node-RED**, allowing the 
 
 ### **LED Color Control**
 
-<p align="center">
   <img src="https://github.com/user-attachments/assets/5e72eb53-2cc7-4eb5-bc41-73415a308994" alt="LED Control Demo" width="600" />
-</p>
 
 ### **Servo Control**
 
