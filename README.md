@@ -90,22 +90,16 @@ All communication runs **in real-time** via **MQTT and Node-RED**, allowing the 
 
 ### **Servo Control**
 
-<p align="center">
   <img src="https://github.com/user-attachments/assets/16fa57c3-7399-476d-a995-b90bb39c0432" alt="Servo Control Demo" width="600" />
-</p>
 
 ### **Hardware Setup**
 
-<p align="center">
   <img src="https://github.com/user-attachments/assets/52e62445-2d85-4f7d-b004-5c5e2ece0d35" alt="Hardware Setup 1" width="500" />
   <img src="https://github.com/user-attachments/assets/b0cbb745-1ab4-45d9-af1f-0df1951b60ea" alt="Hardware Setup 2" width="500" />
-</p>
 
 ### **Cloud Shiftr.io Dashboard**
 
-<p align="center">
   <img src="https://github.com/user-attachments/assets/d3197d72-eca6-41db-b055-b933a6902e61" alt="Shiftr.io Cloud Dashboard" width="600" />
-</p>
 
 ---
 
